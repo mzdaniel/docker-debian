@@ -31,7 +31,6 @@ case "$1" in
   start)
     check_root_id || exit 1
     log_begin_msg "Starting LXC Docker"
-    mount | grep cgroup >/dev/null || mount -t cgroup none /sys/fs/cgroup
     start-stop-daemon --start --background --exec "$DOCKER" -- -d
     log_end_msg $?
     ;;
